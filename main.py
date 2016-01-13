@@ -9,9 +9,11 @@ from io import BytesIO
 import zipfile
 import shutil
 
+import config
+
 __author__ = 'ohaz'
 
-cs2d_path = os.path.join('C:\\', 'Users', 'Richard', 'Desktop', 'cs2d')
+cs2d_path = config.cs2d_path
 check_url = 'http://www.unrealsoftware.de/game_cs2d.php'
 system_os = platform.system()
 TEMP_FOLDER_NAME = 'downloader_temp'
@@ -20,7 +22,7 @@ FILES_TO_COPY = {'windows': ['CounterStrike2D.exe', os.path.join('sys', 'core', 
                  'linux': ['CounterStrike2D'],
                  'macos': []}
 
-force_update = True
+force_update = False
 
 
 def run_subprocess(cmd):
@@ -101,7 +103,7 @@ def main():
                 continue
             break
         else:
-            print('Local up to date')
+            print('Local up to date. Starting cs2d...')
             run_cs2d()
             exit()
 
@@ -157,6 +159,9 @@ def main():
         download_to_temp(tokens, 'macos')
         for item in FILES_TO_COPY['macos']:
             shutil.copy(os.path.join(cs2d_path, TEMP_FOLDER_NAME, 'macos', item), os.path.join(cs2d_path, item))
+
+    print('Up to date now. Starting cs2d...')
+    run_cs2d()
 
 if __name__ == '__main__':
     main()

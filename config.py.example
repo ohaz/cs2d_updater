@@ -1,0 +1,10 @@
+import os
+
+__author__ = 'ohaz'
+
+# Enter CS2D Path here
+# Preferable by doing for example: os.path.join('home', 'user', 'folder')
+cs2d_path = None
+
+
+# Now copy this file to config.py
