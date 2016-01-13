@@ -14,6 +14,8 @@ import config
 __author__ = 'ohaz'
 
 cs2d_path = config.cs2d_path
+if cs2d_path is None:
+    cs2d_path = os.path.dirname(os.path.realpath(__file__))
 check_url = 'http://www.unrealsoftware.de/game_cs2d.php'
 system_os = platform.system()
 TEMP_FOLDER_NAME = 'downloader_temp'
